@@ -44,21 +44,14 @@ export function main() {
       case 1:
         console.log(colors.fg.whitestrong);
         console.log("\n\nCriar Conta\n\n", colors.reset);
-        let numeroConta = leia("Digite o número da conta: ");
-        conta.enqueue(parseInt(numeroConta));
         break;
       case 2:
         console.log(colors.fg.whitestrong);
         console.log("\n\nListar todas as Contas\n\n", colors.reset);
-        console.log(conta.printQueue());
         break;
       case 3:
         console.log(colors.fg.whitestrong);
         console.log("\n\nConsultar dados da Conta - por número\n\n", colors.reset);
-        let numeroContaId = parseInt(leia("Digite o número da conta: "));
-        if (numeroContaId === conta.peek()) {
-          console.log("Conta encontrada!");
-        }
         break;
       case 4:
         console.log(colors.fg.whitestrong);
@@ -67,28 +60,18 @@ export function main() {
       case 5:
         console.log(colors.fg.whitestrong);
         console.log("\n\nApagar uma Conta\n\n", colors.reset);
-        leia("Digite o número da conta a ser apagada: ");
-        conta.dequeue();
         break;
       case 6:
         console.log(colors.fg.whitestrong);
         console.log("\n\nSaque\n\n", colors.reset);
-        let saqueConta = leia("Digite o valor a ser sacado: ");
-        console.log(`o valor de R$ ${saqueConta} foi sacado com sucesso! da conta ${conta.peek()}`);
-
         break;
       case 7:
         console.log(colors.fg.whitestrong);
         console.log("\n\nDepósito\n\n", colors.reset);
-        let depositoConta = leia("Digite o valor a ser depositado: ");
-        console.log(`o valor de R$ ${depositoConta} foi depositado com sucesso! na conta ${conta.peek()}`);
-
         break;
       case 8:
         console.log(colors.fg.whitestrong);
         console.log("\n\nTransferência entre Contas\n\n", colors.reset);
-        let transferenciaConta = leia("Digite o valor a ser transferido: ");
-        console.log(`o valor de R$ ${transferenciaConta} foi transferido com sucesso! da conta ${conta.peek()}`);
         break;
       default:
         console.log("\nOpção Inválida!\n");

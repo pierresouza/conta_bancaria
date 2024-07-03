@@ -1,9 +1,5 @@
-import { Queue } from "./Queue";
 import readlinesync from "readline-sync";
 import { colors } from "./src/util/Colors";
-
-const leia = readlinesync.question;
-const conta = new Queue<number>();
 
 export function main() {
   let opcao: number;

@@ -57,7 +57,7 @@ export class Conta {
   }
   //Método para sacar valores da conta
   public sacar(valor: number): boolean {
-    if (this.saldo >= valor) {
+    if (this.saldo < valor) {
       console.log("Saldo é insuficiente");
       return false;
     }
@@ -90,6 +90,6 @@ export class Conta {
     console.log(`Numero da agência: ${this._agencia}`);
     console.log(`Tipo da conta: ${tipo}`);
     console.log(`Titular da conta: ${this._titular}`);
-    console.log(`Saldo da conta: ${this.saldo}`);
+    console.log(`Saldo da conta: ${this.saldo.toFixed(2)}`);
   }
 }

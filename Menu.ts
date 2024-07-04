@@ -68,37 +68,46 @@ export function main() {
       case 1:
         console.log(colors.fg.whitestrong);
         console.log("\n\nCriar Conta\n\n", colors.reset);
+        keyPress();
         break;
       case 2:
         console.log(colors.fg.whitestrong);
         console.log("\n\nListar todas as Contas\n\n", colors.reset);
+        keyPress();
         break;
       case 3:
         console.log(colors.fg.whitestrong);
         console.log("\n\nConsultar dados da Conta - por número\n\n", colors.reset);
+        keyPress();
         break;
       case 4:
         console.log(colors.fg.whitestrong);
         console.log("\n\nAtualizar dados da Conta\n\n", colors.reset);
+        keyPress();
         break;
       case 5:
         console.log(colors.fg.whitestrong);
         console.log("\n\nApagar uma Conta\n\n", colors.reset);
+        keyPress();
         break;
       case 6:
         console.log(colors.fg.whitestrong);
         console.log("\n\nSaque\n\n", colors.reset);
+        keyPress();
         break;
       case 7:
         console.log(colors.fg.whitestrong);
         console.log("\n\nDepósito\n\n", colors.reset);
+        keyPress();
         break;
       case 8:
         console.log(colors.fg.whitestrong);
         console.log("\n\nTransferência entre Contas\n\n", colors.reset);
+        keyPress();
         break;
       default:
         console.log("\nOpção Inválida!\n");
+        keyPress();
         break;
     }
   }
@@ -112,6 +121,12 @@ export function sobre(): void {
   console.log("Generation Brasil - generation@generation.org");
   console.log("github.com/conteudoGeneration");
   console.log("*****************************************************");
+}
+
+function keyPress(): void {
+  console.log(colors.reset, "");
+  console.log("\nPressione enter para continuar...");
+  readlinesync.prompt();
 }
 
 main();

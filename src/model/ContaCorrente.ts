@@ -1,6 +1,11 @@
 import { Conta } from "./Conta";
 
 export class ContaCorrente extends Conta {
+
+  public teste(): void {
+    throw new Error("Method not implemented.");
+  }
+
   private _limite: number;
 
   constructor(numero: number, agencia: number, tipo: number, titular: string, saldo: number, limite: number) {

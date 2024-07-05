@@ -1,54 +1,9 @@
 import readlinesync from "readline-sync";
 import { colors } from "./src/util/Colors";
-import { Conta } from "./src/model/Conta";
-import { ContaCorrente } from "./src/model/ContaCorrente";
 
 export function main() {
   let opcao: number;
 
-  //novas intancias da classe conta
-  const c1: Conta = new Conta(1, 1234, 1, "Júlia Castro", 800000.0);
-  const c2: Conta = new Conta(2, 1234, 2, "Marcela Sanches", 600000.0);
-  //visualizando o saldo da conta 1
-  c1.visualizar();
-  //visualizando o saldo da conta 2
-  c2.visualizar();
-  //visualizar valor de somente um atributo
-  console.log(`O saldo da conta 01 é: ${c1.saldo} `);
-  //mudando o valor do atributo saldo  da conta 2 com set
-  c2.saldo = 900000.0;
-  //apresentando o novo valor do atributo saldo da conta 2
-  console.log(`O saldo da conta 02 é: ${c2.saldo}`);
-  //saque nas contas
-  console.log(`Sacar 100 Reais da conta c2 ${c1.sacar(100)}`);
-  c1.visualizar();
-  console.log(`Sacar 700000 Reais da conta c2 ${c2.sacar(1000000)}`);
-  c2.visualizar();
-  //Deposito nas contas
-  console.log(`Depositar 20000 Reais na conta c1`);
-  c1.depositar(20000);
-  c1.visualizar();
-
-  console.log(`Depositar 30000.25 Reais na conta c2`);
-  c2.depositar(30000.25);
-  c2.visualizar();
-
-  //novas instâncias da Classe ContaCorrente
-
-  const cc1: ContaCorrente = new ContaCorrente(1000, 1234, 1, "Júlia Castro", 800000.0, 10000.0);
-  const cc2: ContaCorrente = new ContaCorrente(2000, 1234, 2, "Marcela Sanches", 600000.0, 15000.0);
-
-  cc1.visualizar();
-  cc2.visualizar();
-
-  console.log(`\nSaque de R$ 25.000,00 da conta CC1: ${cc1.sacar(25000)}`);
-  console.log(`\nSaque de R$ 15.000,00 da conta CC1: ${cc2.sacar(15000)}`);
-
-  console.log(`\nDepósito de R$ 3.000,99 na conta CC2${cc2.depositar(3000.99)}`);
-  cc2.visualizar();
-
-  console.log(`\nDepósito de R$ 3.000,99 na conta CC1${cc1.depositar(3000.99)}`);
-  cc1.visualizar();
   while (true) {
     console.log(colors.bg.black, colors.fg.yellow);
 

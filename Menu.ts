@@ -1,8 +1,15 @@
 import readlinesync from "readline-sync";
 import { colors } from "./src/util/Colors";
+import { ContaController } from "./src/controller/ContaController";
+import { ContaCorrente } from "./src/model/ContaCorrente";
+import { ContaPoupanca } from "./src/model/ContaPoupança";
 
 export function main() {
-  let opcao: number;
+  let opcao, numero, agencia, tipo, saldo, limite, aniversario: number;
+  let titular: string;
+  const tipoContas = ["Conta Corrente", "Conta Poupança"];
+
+  const contas: ContaController = new ContaController();
 
   while (true) {
     console.log(colors.bg.black, colors.fg.yellow);
@@ -40,16 +47,48 @@ export function main() {
       case 1:
         console.log(colors.fg.whitestrong);
         console.log("\n\nCriar Conta\n\n", colors.reset);
+        console.log("Digite o Numero da Agência: ");
+        agencia = readlinesync.questionInt("");
+
+        console.log("Digite o Nome do Titular da Conta: ");
+        titular = readlinesync.question("");
+
+        console.log("Digite o Tipo da Conta: ");
+        tipo = readlinesync.keyInSelect(tipoContas, "", { cancel: false }) + 1;
+
+        console.log("Digite o Saldo da Conta: ");
+        saldo = readlinesync.questionFloat("");
+
+        switch (tipo) {
+          case 1:
+            console.log("Digite o Limite da Conta: ");
+            limite = readlinesync.questionFloat("");
+            contas.cadastrar(new ContaCorrente(contas.gerarNumero(), agencia, tipo, titular, saldo, limite));
+            break;
+          case 2:
+            console.log("Digite a Data de Aniversário da Conta: ");
+            aniversario = readlinesync.questionInt("");
+            contas.cadastrar(new ContaPoupanca(contas.gerarNumero(), agencia, tipo, titular, saldo, aniversario));
+            break;
+        }
+
         keyPress();
         break;
       case 2:
         console.log(colors.fg.whitestrong);
         console.log("\n\nListar todas as Contas\n\n", colors.reset);
+        contas.listarTodas();
         keyPress();
         break;
       case 3:
         console.log(colors.fg.whitestrong);
         console.log("\n\nConsultar dados da Conta - por número\n\n", colors.reset);
+
+        console.log("Digite o Número da Conta: ");
+        numero = readlinesync.questionInt("");
+
+        contas.procurarPorNumero(numero);
+
         keyPress();
         break;
       case 4:

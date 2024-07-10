@@ -5,7 +5,7 @@ import { ContaCorrente } from "./src/model/ContaCorrente";
 import { ContaPoupanca } from "./src/model/ContaPoupança";
 
 export function main() {
-  let opcao, numero, agencia, tipo, saldo, limite, aniversario: number;
+  let opcao, numero, agencia, tipo, saldo, limite, aniversario, valor, numeroDestino: number;
   let titular: string;
   const tipoContas = ["Conta Corrente", "Conta Poupança"];
 
@@ -152,16 +152,44 @@ export function main() {
       case 6:
         console.log(colors.fg.whitestrong);
         console.log("\n\nSaque\n\n", colors.reset);
+
+        console.log("Digite o Número da Conta: ");
+        numero = readlinesync.questionInt("");
+
+        console.log("Digite o valor do saque: ");
+        valor = readlinesync.questionFloat("");
+
+        contas.sacar(numero, valor);
+
         keyPress();
         break;
       case 7:
         console.log(colors.fg.whitestrong);
         console.log("\n\nDepósito\n\n", colors.reset);
+
+        console.log("Digite o Número da Conta: ");
+        numero = readlinesync.questionInt("");
+
+        console.log("Digite o valor do depósito: ");
+        valor = readlinesync.questionFloat("");
+
+        contas.depositar(numero, valor);
         keyPress();
         break;
       case 8:
         console.log(colors.fg.whitestrong);
         console.log("\n\nTransferência entre Contas\n\n", colors.reset);
+
+        console.log("Digite o Número da Conta: de origem");
+        numero = readlinesync.questionInt("");
+
+        console.log("Digite o Número da Conta: de Destino");
+        numeroDestino = readlinesync.questionInt("");
+
+        console.log("Digite o valor do depósito: ");
+        valor = readlinesync.questionFloat("");
+
+        contas.transferir(numero, numeroDestino, valor);
         keyPress();
         break;
       default:

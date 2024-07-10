@@ -47,16 +47,41 @@ export class ContaController implements ContaRepository {
     }
   }
   sacar(numero: number, valor: number): void {
-    throw new Error("Method not implemented.");
+    let buscarConta = this.buscarNoArray(numero);
+
+    if (buscarConta !== null) {
+      if (buscarConta.sacar(valor)) {
+        console.log("\n O Saque foi efetuado com sucesso!");
+      }
+    } else {
+      console.log("\nConta não encontrada!");
+    }
   }
   depositar(numero: number, valor: number): void {
-    throw new Error("Method not implemented.");
+    let buscarConta = this.buscarNoArray(numero);
+
+    if (buscarConta !== null) {
+      buscarConta.depositar(valor);
+      console.log("\n Deposito efetuado com sucesso!");
+    } else {
+      console.log("\nConta não encontrada!");
+    }
   }
   transferir(numeroOrigem: number, numeroDestino: number, valor: number): void {
-    throw new Error("Method not implemented.");
+    let buscarContaOrigem = this.buscarNoArray(numeroOrigem);
+    let buscarContaDestino = this.buscarNoArray(numeroDestino);
+
+    if (buscarContaOrigem !== null && buscarContaDestino !== null) {
+      if (buscarContaOrigem.sacar(valor) === true) {
+        buscarContaDestino.depositar(valor);
+        console.log("\n Transferência efetuada com sucesso!");
+      }
+    } else {
+      console.log("\n A Conta de origem e/ou Destino não foram encontradas!");
+    }
   }
 
-  //Métdoso auxiliares
+  //Métoos auxiliares
 
   public gerarNumero(): number {
     return ++this.numero;
